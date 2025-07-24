@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        .middle-section {
+            height: 500px;
+            width: 380px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .header {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .top-design {
+            
+            border-radius: 30px;
+            padding: 3px;
+            transition: border-color 0.3s ease;
+            cursor: pointer;
+            margin: 0 9px;
+            border-color: #007bff;
+            border-width: 2px;
+        }
+
+        .top-design:hover {
+            border-color: #007bff;
+            border: solid;
+        }
+
+        .Patient,
+        .Doctor,
+        .Facility {
+            height: 25px;
+            width: 100px;
+            color: #ffffff;
+           
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            color: black;
+        }
+
+        .Profile img {
+            width: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .Patient.active .icon-patient,
+        .Doctor.active .icon-doctor,
+        .Facility.active .icon-facility {
+            transform: scale(1.2);
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .input-bar {
+            height: 40px;
+            width: calc(100% - 100px);
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+            transition: border-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .input-bar:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .submit-button {
+            height: 40px;
+            width: 100px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .Doctor:active{
+            border-color: #007bff;
+            border: solid;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="middle-section">
+        <div class="header">
+            <div class="top-design Patient active" onclick="changeActive('Patient')">
+                <p class="top">Patient Login</p>
+            </div>
+            <div class="top-design Doctor" onclick="changeActive('Doctor')">
+                <p class="top">Doctor Login</p>
+            </div>
+            <div class="top-design Facility" onclick="changeActive('Facility')">
+                <p class="top">Facility Login</p>
+            </div>
+        </div>
+        <div class="Profile">
+            <a href="#" class="icon-patient"><img class="icon-patient" src="Homepage/icons/patient.png" alt="Patient Icon"></a>
+            <a href="#" class="icon-doctor" style="display: none;"><img class="icon-doctor" src="Homepage/icons/doctor.png" alt="Doctor Icon"></a>
+            <a href="#" class="icon-facility" style="display: none;"><img class="icon-facility" src="Homepage/icons/nurse.svg" alt="Facility Icon"></a>
+        </div>
+        <form class="input-container" action="#" method="post">
+            <input type="text" class="input-bar" placeholder="Login Id" required>
+        </form>
+        <form class="input-container" action="#" method="post">
+            <input type="password" class="input-bar" placeholder="Password" required>
+        </form>
+        <button type="submit" class="submit-button">Submit</button>
+    </div>
+
+    <script>
+        function changeActive(type) {
+            const activeClass = type.toLowerCase();
+            document.querySelectorAll('.top-design').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector('.' + activeClass).classList.add('active');
+
+            // Show respective icon and hide others
+            document.querySelectorAll('.Profile a').forEach(item => {
+                item.style.display = 'none';
+            });
+            document.querySelector('.icon-' + activeClass).style.display = 'inline-block';
+        }
+    </script>
+</body>
+
+</html>

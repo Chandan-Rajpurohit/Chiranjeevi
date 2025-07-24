@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        header {
+            background-color: #4CAF50; /* Dark green header background */
+            color: #fff; /* White text color */
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
+        .header-button {
+            background-color: #4cde5db9; /* Darker green */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-button:hover {
+            background-color: #4CAF50; /* Lighter green on hover */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4CAF50; /* Dark green text color */
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            width: calc(100% - 24px); /* Adjusted for input padding */
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #4CAF50; /* Dark green border */
+            border-radius: 5px;
+            font-size: 1.1rem;
+            background-color: #fff; /* White background */
+            color: #555; /* Dark text color */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="date"]:focus,
+        input[type="text"]:focus {
+            border-color: #4CAF50; /* Dark green border on focus */
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50; /* Dark green button color */
+            color: #fff; /* White text color */
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        button[type="submit"]:active {
+            background-color: #3e8e41; /* Darker green on active */
+        }
+
+        input[type="date"]:hover,
+        input[type="text"]:hover {
+            border-color: #45a049; /* Darker green border on hover */
+        }
+    </style>
+</head>
+<body>
+<header>
+
+    <h1>Book an Appointment</h1>
+
+    <div class="header-buttons">
+        <button style="height: 60px;" id="localPhysiciansBtn" class="header-button">Local Physicians</button>
+       
+        <button style="height: 60px;" id="specializedDoctorsBtn" class="header-button">Specialized Doctors</button>
+    </div>
+    
+</header>
+<main>
+
+
+    <form id="appointmentForm" method="POST" action="{% url 'bookAppointment' %}">
+        {% csrf_token %}
+        <div class="form-group">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="doctorID">Doctor ID:</label>
+            <input type="text" id="doctorID" name="doctorID" required>
+        </div>
+        <div class="button-container">
+            <button type="submit">Book Appointment</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    // JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        document.getElementById('localPhysiciansBtn').addEventListener('click', function() {
+            // Handle local physicians button click
+            // Add your logic here
+        });
+
+        document.getElementById('specializedDoctorsBtn').addEventListener('click', function() {
+            // Handle specialized doctors button click
+            // Add your logic here
+        });
+    });
+</script>
+</body>
+</html>

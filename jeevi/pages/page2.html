@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        h1 {
+            padding: 30px;
+            border:solid;
+             border-left: none;
+             border-right: none;
+            text-align: center;
+            border-color: #4CAF50;
+            margin: 0;
+            border-width: 3px;
+            color: #265e4e; /* Dark green text color */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #265e4e; /* Dark green text color */
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #265e4e; /* Dark green border */
+            border-radius: 5px;
+            font-size: 1.1rem;
+            background-color: #fff; /* White background */
+            color: #333; /* Dark text color */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="date"]:focus,
+        input[type="text"]:focus {
+            border-color: #1e8449; /* Darker green border on focus */
+        }
+
+        button {
+            background-color: #4CAF50; /* Dark green button color */
+            color: #fff; /* White text color */
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #265e4e; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Book an Appointment</h1>
+    <form method="POST" action="{% url 'bookAppointment' %}">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="doctorID">Doctor ID:</label>
+        <input type="text" id="doctorID" name="doctorID" required>
+        <button type="button">Local Physicians Information</button>
+        <button type="button">Specialized Doctor Information</button>
+        <button type="submit">Book Appointment</button>
+    </form>
+</body>
+</html>

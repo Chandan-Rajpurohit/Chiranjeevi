@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Prescriptions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start; /* Align items at the top */
+            padding: 1rem;
+        }
+
+        h1 {
+            width: 100%;
+            margin-bottom: 2rem;
+            color: #265e4e; /* Custom text color */
+            text-align: center; /* Center the heading */
+        }
+
+        /* Left Panel */
+        .left-panel {
+            width: 20%;
+            flex-basis: 20%;
+            margin-right: 1rem;
+        }
+
+        .date-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align items in the center */
+        }
+
+        .date-btn {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px; /* Rounded buttons */
+            background-color: #1eb657; /* Green button color */
+            color: #fff; /* White text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .date-btn:hover {
+            background-color: #169a48; /* Darker green on hover */
+        }
+
+        /* Right Panel */
+        .right-panel {
+            width: 78%;
+            flex-basis: 78%;
+        }
+
+        .panel {
+            background-color: #fff; /* White panel background */
+            padding: 1.5rem;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #265e4e; /* Custom text color */
+            text-align: center;
+        }
+
+        #prescription-content {
+            border: 2px dashed #cbd9e6;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        #medicine-list {
+            padding-left: 0;
+            list-style-type: none; /* Remove default list style */
+            margin-top: 0;
+        }
+
+        li {
+            padding: 12px;
+            border-bottom: 1px dashed #cbd9e6;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-panel {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .right-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Previous Prescriptions and Records</h1>
+    <div class="left-panel">
+        <div class="date-container">
+            {% if prescription_dates %}
+                {% for date in prescription_dates %}
+                    {% with formatted_date=date|date:"Y-m-d" %}
+                        <a href="?date={{ formatted_date }}"><button class="date-btn">{{ date }}</button></a>
+                    {% endwith %}
+                {% endfor %}
+            {% else %}
+                <p>No record yet</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div id="prescription-panel" class="panel">
+            <h2>Prescription</h2>
+            <p id="prescription-content">{{ prescription_details|linebreaksbr }}</p>
+        </div>
+        <div id="medicine-panel" class="panel">
+            <h2>Medicine</h2>
+            <ul id="medicine-list">
+                <li>Medicine provided by doctor: <br> {{docmed|linebreaksbr}}</li>
+                <li>Purchasable medicine: <br>{{purmed|linebreaksbr}}</li>
+                <li>Permanent Course: <br> {{perm|linebreaksbr}}</li>
+                <li>Duration: {{dur}} days</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

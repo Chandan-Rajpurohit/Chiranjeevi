@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phenomenal Medicine Search</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        /* Form Styling */
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        input[type=search] {
+            width: 60%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #5cb85c;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        button[type=submit] {
+            width: 30%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type=submit]:hover {
+            background-color: #4cae4c;
+        }
+        
+        /* Container Styling */
+        .my-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+        
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        
+        .left-panel {
+            margin-right: 20px;
+        }
+        
+        .right-panel {
+            background-color: #f2f2f2;
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #5cb85c;
+            color: #fff;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Image Styling */
+        #image img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive Styling */
+        @media only screen and (max-width: 768px) {
+            form {
+                width: 80%;
+                margin: 50px auto;
+            }
+            
+            input[type=search] {
+                width: 100%;
+            }
+            
+            .my-container {
+                flex-direction: column;
+                margin: 20px auto;
+            }
+            
+            .left-panel, .right-panel {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="{% url 'searchm' %}">
+        {% csrf_token %}
+        <input type="search" id="medicine-search" name="medicine-search" placeholder="Enter Medicine Name" required>
+        <button type="submit">Search</button>
+    </form>
+    <div class="my-container">
+        <div class="left-panel">
+            {% if message %}
+                <p>{{ message }}</p>
+            {% else %}
+                <table>
+                    <tr>
+                        <th>Detail</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Manufacturer:</td>
+                        <td>{{ a }}</td>
+                    </tr>
+                    <tr>
+                        <td>Medicine Name:</td>
+                        <td>{{ b }}</td>
+                    </tr>
+                    <tr>
+                        <td>Reasons:</td>
+                        <td>{{ c }}</td>
+                    </tr>
+                    <tr>
+                        <td>Usage:</td>
+                        <td>{{ d }}</td>
+                    </tr>
+                    <tr>
+                        <td>Precautions:</td>
+                        <td>{{ e }}</td>
+                    </tr>
+                    <tr>
+                        <td>Side effects:</td>
+                        <td>{{ f }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        </div>
+        <div class="right-panel">
+            <div id="image" class="panel">
+                <h2 align="center"></h2>
+                {% if image %}
+                    <img src="{{ MEDIA_URL }}{{ image }}" alt="Medicine Image">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

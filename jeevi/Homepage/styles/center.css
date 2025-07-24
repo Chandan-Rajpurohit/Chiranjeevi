@@ -1,0 +1,186 @@
+.center{
+    height: 350px;
+  border: solid;
+    display: flex;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    border-color: darkgoldenrod;
+    margin-bottom: 30px;
+   
+}
+
+.right-center{
+   
+    flex: 1;
+
+}
+
+.img{
+    width: 100%;
+    height: 350px;
+    border-radius: 30px;
+}
+
+
+.left-center{
+ 
+  flex: 1;
+    
+    
+}
+
+.center2{
+    height: 450px;
+    background-color: cadetblue;
+    border-radius: 20px;
+    
+}
+
+.benefits{
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.card-info{
+    max-width: 915px;
+    text-align: center;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto 32px;
+    font-weight: 500;
+}
+
+.template{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 230px;
+    width: 280px;
+   
+    align-items: center;
+    border-radius: 12px;
+}
+
+.temp1{
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.info1{
+    padding: 10px;
+    font-weight: 500;
+}
+
+.info2{
+    width: 250px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.template-row{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 18px;
+    margin-right: 18px;
+   
+}
+
+p{
+    font-size: 38px;
+    margin: 0px;
+    
+}
+
+.digital-details{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    
+   
+
+}
+
+.services{
+    height: 300px;
+    background-color:white;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    
+
+}
+
+.create-button{
+    margin-top:32px;
+     width: 280px;
+    height: 50px;
+    color: white;
+    border: none;
+    background-color: purple;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.create-button:hover{
+    background-color: rgb(129, 81, 129);
+}
+
+.service-buttons,.service-buttons1,.service-buttons2,.service-buttons3,
+.service-buttons4,.service-buttons5{
+    display: flex;
+  justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding:14px;
+
+}
+
+.service-butt{
+  
+    height: 55px;
+    border-radius: 70px;
+    width: 150px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.service-butt:hover{
+ background-color: rgb(188, 182, 182);
+}
+
+.emergency-button{
+    padding-left: 70px;
+   padding-right: 70px;
+    height: 70px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 80px;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.emergency-button:hover{
+    background-color:white;
+    color: red;
+    border: solid;
+    border-color: red;
+}
+

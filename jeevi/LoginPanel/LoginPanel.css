@@ -1,0 +1,28 @@
+.panel{
+    height: 430px;
+    width: 500px;
+    background-color:greenyellow;
+    display: flex;
+   align-items: center;
+  justify-content: space-between;
+   flex-direction: column;
+   padding-top: 50px;
+   padding-bottom: 50px;
+}
+
+
+input{
+    height: 30px;
+    width: 400px;
+}
+
+.Login-options{
+    display: flex;
+    justify-content: space-between;
+    width: 340px;
+}
+
+.butt1:active{
+    background-color: black;
+}
+

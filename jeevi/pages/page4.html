@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 10px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+
+        th:not(:first-child),
+        td:not(:first-child) {
+            border-left: 1px solid #ddd;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Appointment Date</th>
+                    <th>Doctor ID</th>
+                    <th>Doctor Name</th>
+                    <th>Visited</th>
+                    <th>One-Time Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointment_list %}
+                <tr>
+                    <td>{{ appointment.patientid }}</td>
+                    <td>{{ appointment.dateoapp }}</td>
+                    <td>{{ appointment.docid }}</td>
+                    <td>{{ appointment.doctor_name }}</td>
+                    <td>{{ appointment.visited }}</td>
+                    <td>{{ appointment.otc }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
